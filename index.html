@@ -279,18 +279,63 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
-    nav { padding: 24px; }
+    nav { padding: 20px 24px; }
     .nav-links { display: none; }
-    #hero { grid-template-columns: 1fr; }
-    .hero-right { height: 45vh; }
-    .hero-left { padding: 100px 24px 60px; }
-    section { padding: 72px 24px; }
+
+    /* Hero: 텍스트 위, 사진 아래 */
+    #hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 55vw;
+      height: auto;
+      min-height: 100vh;
+    }
+    .hero-left {
+      padding: 100px 24px 40px;
+      justify-content: flex-start;
+      order: 1;
+    }
+    .hero-right {
+      order: 2;
+      height: 55vw;
+      min-height: 260px;
+      max-height: 380px;
+    }
+    .hero-right img {
+      object-position: center 10%;
+    }
+    .hero-right::after {
+      background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, transparent 30%),
+                  linear-gradient(to top, var(--black) 0%, transparent 20%);
+    }
+    .hero-year { display: none; }
+    .hero-title { font-size: clamp(40px, 11vw, 64px); }
+    .hero-cta { flex-wrap: wrap; }
+
+    section { padding: 64px 24px; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    #contact { grid-template-columns: 1fr; padding: 72px 0; }
+
+    #contact { grid-template-columns: 1fr; padding: 64px 0; }
     .contact-left { padding: 0 24px; border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 48px; margin-bottom: 48px; }
     .contact-right { padding: 0 24px; }
-    .work-item { grid-template-columns: 60px 1fr; }
+
+    /* 이메일 줄바꿈 허용 */
+    .contact-link-value {
+      word-break: break-all;
+      font-size: 12px;
+    }
+    .about-info-value {
+      word-break: break-all;
+    }
+    .contact-link-item {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .work-item { grid-template-columns: 52px 1fr; gap: 16px; }
     .work-category { display: none; }
+    .work-title { font-size: 18px; }
+    .cat-header { font-size: 11px; }
+
     footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
   }
 </style>
