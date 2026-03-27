@@ -286,9 +286,9 @@
     /* Hero: 텍스트 위, 사진 아래 */
     #hero {
       grid-template-columns: 1fr;
-      grid-template-rows: auto 55vw;
+      grid-template-rows: auto auto;
       height: auto;
-      min-height: 100vh;
+      min-height: unset;
     }
     .hero-left {
       padding: 100px 24px 40px;
@@ -297,13 +297,20 @@
     }
     .hero-right {
       order: 2;
-      height: auto;
+      overflow: hidden;
+      width: 50%;
+      margin: 0 auto;
+      aspect-ratio: 1333 / 2000;
     }
     .hero-right img {
       width: 100%;
-      height: auto;
-      object-fit: contain;
-      object-position: center top;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+    .hero-right::after {
+      display: none;
     }
     .hero-right::after {
       background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, transparent 30%),
